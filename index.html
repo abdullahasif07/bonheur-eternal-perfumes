@@ -99,10 +99,16 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 72px;
+  /* Overscroll / bounce reveals this instead of harsh white (mobile Safari). */
+  background-color: var(--c-surface-darker);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   font-family: var(--ff-body);
   font-size: var(--fs-base);
   line-height: 1.6;
@@ -111,6 +117,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Fills leftover viewport below content so body white doesn’t show above the
+   dark footer on short pages + mobile browsers (common on GitHub Pages). */
+main {
+  flex: 1 1 auto;
+  width: 100%;
+  background-color: var(--c-surface-darker);
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -1097,9 +1111,10 @@ body.is-loaded .hero__bg {
    ========================================================= */
 
 .footer {
+  flex-shrink: 0;
   background: var(--c-surface-darker);
   color: rgba(245, 235, 220, 0.78);
-  padding: var(--s-10) 0 var(--s-6);
+  padding: var(--s-10) 0 calc(var(--s-6) + env(safe-area-inset-bottom, 0px));
   border-top: 2px solid var(--c-amber-500);
 }
 

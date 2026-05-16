@@ -3,9 +3,10 @@
    ========================================================= */
 
 .footer {
+  flex-shrink: 0;
   background: var(--c-surface-darker);
   color: rgba(245, 235, 220, 0.78);
-  padding: var(--s-10) 0 var(--s-6);
+  padding: var(--s-10) 0 calc(var(--s-6) + env(safe-area-inset-bottom, 0px));
   border-top: 2px solid var(--c-amber-500);
 }
 
