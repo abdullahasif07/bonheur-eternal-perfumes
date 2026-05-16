@@ -8,12 +8,14 @@ import { initNav }        from "./nav.js";
 import { initSmoothScroll } from "./scroll.js";
 import { initContactForm } from "./form.js";
 import { initAnimations }  from "./animations.js";
+import { initLightbox }    from "./lightbox.js";
 
 const boot = () => {
   initNav();
   initSmoothScroll();
   initContactForm();
   initAnimations();
+  initLightbox();
 
   // Trigger hero entrance sequence on next frame, so the initial
   // state has rendered and the transition is actually visible.

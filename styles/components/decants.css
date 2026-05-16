@@ -1,0 +1,130 @@
+/* =========================================================
+   Luxury Decants — subsection inside .collection
+   Two-row mosaic: image | text, then text | image — images use
+   intrinsic aspect ratio (contain) so nothing is cropped.
+   ========================================================= */
+
+.collection .decants {
+  margin-top: clamp(var(--s-10), 9vw, var(--s-12));
+  padding: clamp(var(--s-9), 7vw, var(--s-11)) clamp(var(--s-6), 4vw, var(--s-8))
+    clamp(var(--s-10), 8vw, var(--s-11));
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(196, 134, 75, 0.28);
+  background:
+    radial-gradient(ellipse 95% 85% at 50% -15%, rgba(200, 138, 84, 0.22), transparent 52%),
+    radial-gradient(ellipse 70% 55% at 100% 80%, rgba(184, 115, 51, 0.12), transparent 55%),
+    linear-gradient(
+      165deg,
+      rgba(62, 44, 32, 0.72) 0%,
+      rgba(36, 24, 18, 0.97) 48%,
+      rgba(46, 31, 21, 0.98) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 235, 220, 0.08),
+    0 28px 56px -22px rgba(0, 0, 0, 0.42);
+}
+
+.collection .decants__head {
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto var(--s-9);
+}
+
+.collection .decants__head .eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-amber-400);
+}
+
+.collection .decants__title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.75rem, 1.35rem + 1.4vw, 2.35rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--c-sand-50);
+  margin: 0 0 var(--s-4);
+}
+
+.collection .decants__tagline {
+  margin: 0;
+  font-size: var(--fs-lg);
+  line-height: 1.55;
+  color: rgba(245, 235, 220, 0.78);
+  font-weight: 300;
+}
+
+.collection .decants__mosaic {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--s-8), 6vw, var(--s-10));
+  max-width: 1080px;
+  margin: 0 auto var(--s-8);
+}
+
+.collection .decants__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--s-6), 4vw, var(--s-9));
+  align-items: center;
+}
+
+.collection .decants__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.collection .decants__text p {
+  margin: 0;
+  font-size: var(--fs-md);
+  line-height: 1.72;
+  color: rgba(245, 235, 220, 0.7);
+}
+
+.collection .decants__figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(196, 134, 75, 0.22);
+  background: var(--c-espresso-900);
+  box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.35);
+}
+
+.collection .decants__img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .collection .decants__row {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  /* Stack as: image, then copy — both rows */
+  .collection .decants__row > .decants__figure {
+    order: -1;
+  }
+}
+
+.collection .decants__cta {
+  display: flex;
+  justify-content: center;
+}
+
+.collection .decants__cta .btn {
+  color: var(--c-sand-50);
+  border-color: var(--c-line-dark);
+}
+
+.collection .decants__cta .btn:hover {
+  background: var(--c-amber-500);
+  border-color: var(--c-amber-500);
+  color: #fff;
+}

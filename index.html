@@ -692,6 +692,138 @@ body.is-loaded .hero__bg {
   color: #fff;
 }
 
+/* ↪ inlined styles/components/decants.css */
+/* =========================================================
+   Luxury Decants — subsection inside .collection
+   Two-row mosaic: image | text, then text | image — images use
+   intrinsic aspect ratio (contain) so nothing is cropped.
+   ========================================================= */
+
+.collection .decants {
+  margin-top: clamp(var(--s-10), 9vw, var(--s-12));
+  padding: clamp(var(--s-9), 7vw, var(--s-11)) clamp(var(--s-6), 4vw, var(--s-8))
+    clamp(var(--s-10), 8vw, var(--s-11));
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(196, 134, 75, 0.28);
+  background:
+    radial-gradient(ellipse 95% 85% at 50% -15%, rgba(200, 138, 84, 0.22), transparent 52%),
+    radial-gradient(ellipse 70% 55% at 100% 80%, rgba(184, 115, 51, 0.12), transparent 55%),
+    linear-gradient(
+      165deg,
+      rgba(62, 44, 32, 0.72) 0%,
+      rgba(36, 24, 18, 0.97) 48%,
+      rgba(46, 31, 21, 0.98) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 235, 220, 0.08),
+    0 28px 56px -22px rgba(0, 0, 0, 0.42);
+}
+
+.collection .decants__head {
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto var(--s-9);
+}
+
+.collection .decants__head .eyebrow {
+  margin-bottom: var(--s-3);
+  color: var(--c-amber-400);
+}
+
+.collection .decants__title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.75rem, 1.35rem + 1.4vw, 2.35rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--c-sand-50);
+  margin: 0 0 var(--s-4);
+}
+
+.collection .decants__tagline {
+  margin: 0;
+  font-size: var(--fs-lg);
+  line-height: 1.55;
+  color: rgba(245, 235, 220, 0.78);
+  font-weight: 300;
+}
+
+.collection .decants__mosaic {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--s-8), 6vw, var(--s-10));
+  max-width: 1080px;
+  margin: 0 auto var(--s-8);
+}
+
+.collection .decants__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--s-6), 4vw, var(--s-9));
+  align-items: center;
+}
+
+.collection .decants__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.collection .decants__text p {
+  margin: 0;
+  font-size: var(--fs-md);
+  line-height: 1.72;
+  color: rgba(245, 235, 220, 0.7);
+}
+
+.collection .decants__figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(196, 134, 75, 0.22);
+  background: var(--c-espresso-900);
+  box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.35);
+}
+
+.collection .decants__img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .collection .decants__row {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  /* Stack as: image, then copy — both rows */
+  .collection .decants__row > .decants__figure {
+    order: -1;
+  }
+}
+
+.collection .decants__cta {
+  display: flex;
+  justify-content: center;
+}
+
+.collection .decants__cta .btn {
+  color: var(--c-sand-50);
+  border-color: var(--c-line-dark);
+}
+
+.collection .decants__cta .btn:hover {
+  background: var(--c-amber-500);
+  border-color: var(--c-amber-500);
+  color: #fff;
+}
+
 /* ↪ inlined styles/components/brand-banner.css */
 /* =========================================================
    Brand editorial banner — product qualities / proof strip.
@@ -1023,6 +1155,89 @@ body.is-loaded .hero__bg {
   flex-wrap: wrap;
 }
 
+/* ↪ inlined styles/components/lightbox.css */
+/* =========================================================
+   Image lightbox (<dialog>) — click / Enter / Space on [data-lightbox]
+   ========================================================= */
+
+img[data-lightbox] {
+  cursor: zoom-in;
+}
+
+img[data-lightbox]:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 4px;
+}
+
+.lightbox {
+  margin: 0;
+  padding: clamp(var(--s-6), 4vw, var(--s-9));
+  border: none;
+  background: transparent;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  box-sizing: border-box;
+}
+
+.lightbox::backdrop {
+  background: rgba(20, 12, 6, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox__close {
+  position: fixed;
+  top: clamp(var(--s-4), 3vw, var(--s-6));
+  right: clamp(var(--s-4), 3vw, var(--s-6));
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: var(--ff-body);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--c-sand-50);
+  background: rgba(36, 24, 18, 0.85);
+  border: 1px solid rgba(245, 235, 220, 0.2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.lightbox__close:hover {
+  background: var(--c-amber-500);
+  border-color: var(--c-amber-500);
+  color: #fff;
+}
+
+.lightbox__close:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 3px;
+}
+
+.lightbox__img {
+  max-width: min(92vw, 1440px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(245, 235, 220, 0.08);
+  cursor: default;
+}
+
 
 /* ↪ inlined styles/animations.css */
 /* =========================================================
@@ -1200,6 +1415,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
       <figure class="brand-banner__figure reveal">
         <img
           class="brand-banner__img"
+          data-lightbox
+          tabindex="0"
+          aria-haspopup="dialog"
           src="assets/BE_GENERAL.jpeg"
           alt="Bonheur Eternal B.E Eau de Parfum bottle and presentation box on marble; highlights premium quality, long-lasting scent, and versatile wear from evening to everyday."
           width="1280"
@@ -1226,6 +1444,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             <div class="card__media">
               <img
                 class="card__img card__img--tall"
+                data-lightbox
+                tabindex="0"
+                aria-haspopup="dialog"
                 src="assets/signature-fragrances/signature-1.jpeg"
                 alt="Velvet Mist — a warm amber Bonheur Eternal bottle lit by golden light on a wooden surface"
                 width="714"
@@ -1256,6 +1477,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             <div class="card__media">
               <img
                 class="card__img"
+                data-lightbox
+                tabindex="0"
+                aria-haspopup="dialog"
                 src="assets/signature-fragrances/signature-2.jpeg"
                 alt="Scent Luxe — a round-capped black Bonheur Eternal flacon and its matching presentation box"
                 width="1125"
@@ -1286,6 +1510,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             <div class="card__media">
               <img
                 class="card__img"
+                data-lightbox
+                tabindex="0"
+                aria-haspopup="dialog"
                 src="assets/signature-fragrances/signature-3.jpeg"
                 alt="Essence Box — a dark Bonheur Eternal bottle beside its gold-bordered presentation box"
                 width="864"
@@ -1316,6 +1543,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             <div class="card__media">
               <img
                 class="card__img"
+                data-lightbox
+                tabindex="0"
+                aria-haspopup="dialog"
                 src="assets/signature-fragrances/signature-5.jpeg"
                 alt="Nuit Dorée — a dark Bonheur Eternal bottle with a gold label beside its matching box at twilight"
                 width="864"
@@ -1342,6 +1572,84 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             </div>
           </article>
         </div>
+
+        <div class="decants reveal" id="decants" style="--reveal-delay: 80ms">
+          <header class="decants__head">
+            <span class="eyebrow">Bonheur Eternal</span>
+            <h3 class="decants__title">Bonheur Eternal Luxury Decants</h3>
+            <p class="decants__tagline">
+              Crafted for those who believe elegance should never be left behind.
+            </p>
+          </header>
+
+          <div class="decants__mosaic">
+            <div class="decants__row reveal" style="--reveal-delay: 100ms">
+              <figure class="decants__figure decants__figure--landscape">
+                <img
+                  class="decants__img"
+                  data-lightbox
+                  tabindex="0"
+                  aria-haspopup="dialog"
+                  src="assets/signature-fragrances/luxury_decants_1.jpeg"
+                  alt="Bonheur Eternal luxury decants arranged as miniature vessels on an elegant surface"
+                  width="1536"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="decants__text">
+                <p>
+                  Bonheur Eternal Decants are refined miniature expressions of luxury —
+                  designed to slip effortlessly into your wallet, clutch, evening bag,
+                  or travel case while preserving the sophistication of your signature
+                  scent wherever life takes you.
+                </p>
+                <p>
+                  More than a fragrance sample, each decant is a private luxury ritual.
+                </p>
+              </div>
+            </div>
+
+            <div class="decants__row decants__row--alt reveal" style="--reveal-delay: 160ms">
+              <div class="decants__text">
+                <p>
+                  Whether before a dinner reservation, after a long flight, during
+                  golden-hour meetings —
+                </p>
+                <p>
+                  or moments before someone unforgettable walks into the room, your
+                  scent remains immaculate, intimate, and unforgettable.
+                </p>
+              </div>
+              <figure class="decants__figure decants__figure--portrait">
+                <img
+                  class="decants__img"
+                  data-lightbox
+                  tabindex="0"
+                  aria-haspopup="dialog"
+                  src="assets/signature-fragrances/luxury_decants_2.jpeg"
+                  alt="Bonheur Eternal pocket-sized decant held for an intimate on-the-go fragrance ritual"
+                  width="1024"
+                  height="1536"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+          </div>
+
+          <div class="decants__cta">
+            <a
+              class="btn btn--ghost"
+              href="https://wa.me/966598192526?text=Hi%20Bonheur%20Eternal%2C%20I%27d%20like%20to%20order%20luxury%20decants."
+              target="_blank"
+              rel="noopener"
+            >
+              Order decants via WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1350,6 +1658,9 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
         <div class="about__media reveal">
           <img
             class="about__img"
+            data-lightbox
+            tabindex="0"
+            aria-haspopup="dialog"
             src="assets/about.jpeg"
             alt="A gloved hand reaching for a Bonheur Eternal flacon amid apothecary bottles and fresh jasmine — the Bonheur Eternal atelier"
             width="982"
@@ -1436,6 +1747,13 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
 
   </main>
 
+  <dialog class="lightbox" id="imageLightbox" aria-label="Enlarged image">
+    <button type="button" class="lightbox__close" aria-label="Close enlarged image">
+      &times;
+    </button>
+    <img class="lightbox__img" alt="" decoding="async" />
+  </dialog>
+
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
@@ -1497,7 +1815,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
     </defs>
   </svg>
 
-  <script type="module" src="scripts/main.js?v=92f9f53a"></script>
+  <script type="module" src="scripts/main.js?v=492ba844"></script>
 
 </body>
 </html>
