@@ -1,0 +1,49 @@
+/* =========================================================
+   Brand editorial banner — product qualities / proof strip.
+   Uses the same espresso palette as the collection so the bright
+   marble graphic reads as a lit panel instead of a harsh white band.
+   ========================================================= */
+
+.brand-banner {
+  /* Feather from hero’s deep tones into the dark shelf below */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(36, 24, 18, 0.55) 0%,
+      transparent 22%
+    ),
+    linear-gradient(
+      180deg,
+      var(--c-espresso-900) 0%,
+      var(--c-surface-dark) 45%,
+      var(--c-espresso-800) 100%
+    );
+  padding: clamp(var(--s-9), 7vw, var(--s-11)) 0;
+  border-top: 1px solid var(--c-line-dark);
+  border-bottom: 1px solid var(--c-line-dark);
+}
+
+.brand-banner__figure {
+  margin: 0 auto;
+  max-width: min(var(--container), 100%);
+  padding-inline: var(--s-6);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px rgba(245, 235, 220, 0.08);
+}
+
+@media (max-width: 640px) {
+  .brand-banner__figure {
+    padding-inline: var(--s-5);
+  }
+}
+
+.brand-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
