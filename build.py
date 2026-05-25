@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Bonheur Eternal — static site builder.
+BONHEURETERNAL — static site builder.
 
 Reads src/template.html, expands every
     <!-- @include path/to/fragment.html -->

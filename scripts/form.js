@@ -36,7 +36,7 @@ export function initContactForm() {
       return;
     }
 
-    const subject = `Inquiry from ${name} — Bonheur Eternal`;
+    const subject = `Inquiry from ${name} — BONHEURETERNAL`;
     const body =
       `Name: ${name}\n` +
       `Email: ${email}\n\n` +

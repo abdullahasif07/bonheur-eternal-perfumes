@@ -1,0 +1,104 @@
+/* =========================================================
+   Brand lockup — matches bottle label:
+   BONHEURETERNAL (sans, no space) / rule / B.E (serif)
+   ========================================================= */
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  /* Stretch rows to the widest line so B.E can sit centered under the rule */
+  align-items: stretch;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-lockup:hover {
+  color: inherit;
+}
+
+/* Top word — clean sans (Inter), merged word, logo-style caps */
+.brand-lockup__name {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: clamp(0.5625rem, 0.48rem + 0.35vw, 0.6875rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.brand-lockup__rule {
+  display: block;
+  width: 100%;
+  min-width: 4.75rem;
+  height: 1px;
+  margin-top: 0.35rem;
+  margin-bottom: 0.38rem;
+  background: currentColor;
+  opacity: 0.92;
+}
+
+/* Monogram — centered under the rule, matching bottle label layout */
+.brand-lockup__monogram {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: clamp(1.2rem, 1rem + 0.75vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  text-align: center;
+}
+
+/* Nav: sits on translucent / hero — high-contrast lettering */
+.nav__brand.brand-lockup {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.nav__brand.brand-lockup:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.nav.is-scrolled .nav__brand.brand-lockup,
+.nav.is-open .nav__brand.brand-lockup {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+/* Footer: stack matches physical label — column width from widest glyph row,
+   all three bands centred on one axis */
+.footer__brand .brand-lockup.footer__brand-link {
+  display: grid;
+  grid-auto-rows: auto;
+  /* Column tracks the widest text row so the rule aligns with name + monogram */
+  justify-items: stretch;
+  width: max-content;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.footer__brand .brand-lockup__name {
+  color: rgba(250, 245, 238, 0.9);
+  letter-spacing: 0.065em;
+  justify-self: center;
+}
+
+.footer__brand .brand-lockup__rule {
+  justify-self: stretch;
+  width: auto;
+  min-width: unset;
+  margin-top: 0.32rem;
+  margin-bottom: 0.36rem;
+  /* Visually extends past the wordmark like the printed label; layout width unchanged */
+  transform: scaleX(1.085);
+  transform-origin: center center;
+}
+
+.footer__brand .brand-lockup__monogram {
+  color: #fff;
+  letter-spacing: 0.055em;
+  font-feature-settings: "lnum" 1;
+  justify-self: center;
+}

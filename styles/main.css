@@ -1,5 +1,5 @@
 /*
- * Bonheur Eternal — stylesheet entry point.
+ * BONHEURETERNAL — stylesheet entry point.
  * Modules are imported in cascade order: tokens → layout → components → animations.
  * Kept as native @imports for zero-build development. Bundle for production if desired.
  */
@@ -7,6 +7,7 @@
 @import url("./tokens.css");
 @import url("./layout.css");
 
+@import url("./components/brand-lockup.css");
 @import url("./components/nav.css");
 @import url("./components/buttons.css");
 @import url("./components/hero.css");

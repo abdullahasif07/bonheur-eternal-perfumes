@@ -25,14 +25,24 @@
 .footer__brand {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--s-2);
 }
 
-.footer__mark {
-  font-family: var(--ff-display);
-  font-size: 1.5rem;
-  color: #fff;
-  letter-spacing: 0.02em;
+@media (min-width: 761px) {
+  .footer__brand {
+    align-items: flex-start;
+  }
+}
+
+.footer__brand-link {
+  text-decoration: none;
+}
+
+.footer__brand-link:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .footer__tag {

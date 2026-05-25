@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Bonheur Eternal — a luxury fragrance house crafting timeless scents. Explore our signature collection and order directly via WhatsApp." />
+  <meta name="description" content="BONHEURETERNAL — a luxury fragrance house crafting timeless scents. Explore our signature collection and order directly via WhatsApp." />
   <meta name="theme-color" content="#2b1e14" />
-  <title>Bonheur Eternal — Luxury Fragrance House</title>
+  <title>BONHEURETERNAL B.E — Luxury Fragrance House</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,7 @@
 
   <style>
 /*
- * Bonheur Eternal — stylesheet entry point.
+ * BONHEURETERNAL — stylesheet entry point.
  * Modules are imported in cascade order: tokens → layout → components → animations.
  * Kept as native @imports for zero-build development. Bundle for production if desired.
  */
@@ -201,6 +201,112 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section-head .section-lede { margin-inline: auto; }
 
 
+/* ↪ inlined styles/components/brand-lockup.css */
+/* =========================================================
+   Brand lockup — matches bottle label:
+   BONHEURETERNAL (sans, no space) / rule / B.E (serif)
+   ========================================================= */
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  /* Stretch rows to the widest line so B.E can sit centered under the rule */
+  align-items: stretch;
+  line-height: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-lockup:hover {
+  color: inherit;
+}
+
+/* Top word — clean sans (Inter), merged word, logo-style caps */
+.brand-lockup__name {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: clamp(0.5625rem, 0.48rem + 0.35vw, 0.6875rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.brand-lockup__rule {
+  display: block;
+  width: 100%;
+  min-width: 4.75rem;
+  height: 1px;
+  margin-top: 0.35rem;
+  margin-bottom: 0.38rem;
+  background: currentColor;
+  opacity: 0.92;
+}
+
+/* Monogram — centered under the rule, matching bottle label layout */
+.brand-lockup__monogram {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: clamp(1.2rem, 1rem + 0.75vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  text-align: center;
+}
+
+/* Nav: sits on translucent / hero — high-contrast lettering */
+.nav__brand.brand-lockup {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.nav__brand.brand-lockup:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.nav.is-scrolled .nav__brand.brand-lockup,
+.nav.is-open .nav__brand.brand-lockup {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+/* Footer: stack matches physical label — column width from widest glyph row,
+   all three bands centred on one axis */
+.footer__brand .brand-lockup.footer__brand-link {
+  display: grid;
+  grid-auto-rows: auto;
+  /* Column tracks the widest text row so the rule aligns with name + monogram */
+  justify-items: stretch;
+  width: max-content;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.footer__brand .brand-lockup__name {
+  color: rgba(250, 245, 238, 0.9);
+  letter-spacing: 0.065em;
+  justify-self: center;
+}
+
+.footer__brand .brand-lockup__rule {
+  justify-self: stretch;
+  width: auto;
+  min-width: unset;
+  margin-top: 0.32rem;
+  margin-bottom: 0.36rem;
+  /* Visually extends past the wordmark like the printed label; layout width unchanged */
+  transform: scaleX(1.085);
+  transform-origin: center center;
+}
+
+.footer__brand .brand-lockup__monogram {
+  color: #fff;
+  letter-spacing: 0.055em;
+  font-feature-settings: "lnum" 1;
+  justify-self: center;
+}
+
 /* ↪ inlined styles/components/nav.css */
 /* =========================================================
    Navigation bar
@@ -233,25 +339,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .nav__brand {
-  display: inline-flex;
-  flex-direction: column;
-  line-height: 1;
-  color: #fff;
-}
-
-.nav__brand-mark {
-  font-family: var(--ff-display);
-  font-size: 1.35rem;
-  letter-spacing: 0.02em;
-}
-
-.nav__brand-sub {
-  font-family: var(--ff-body);
-  font-size: 0.625rem;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-  margin-top: 2px;
-  color: var(--c-sand-200);
+  flex-shrink: 0;
 }
 
 .nav__links {
@@ -1243,14 +1331,24 @@ body.is-loaded .hero__bg {
 .footer__brand {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--s-2);
 }
 
-.footer__mark {
-  font-family: var(--ff-display);
-  font-size: 1.5rem;
-  color: #fff;
-  letter-spacing: 0.02em;
+@media (min-width: 761px) {
+  .footer__brand {
+    align-items: flex-start;
+  }
+}
+
+.footer__brand-link {
+  text-decoration: none;
+}
+
+.footer__brand-link:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .footer__tag {
@@ -1448,9 +1546,10 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
 <body>
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#home" class="nav__brand" aria-label="Bonheur Eternal home">
-        <span class="nav__brand-mark">Bonheur</span>
-        <span class="nav__brand-sub">Eternal</span>
+      <a href="#home" class="brand-lockup nav__brand" aria-label="BONHEURETERNAL B.E — Home">
+        <span class="brand-lockup__name">BONHEURETERNAL</span>
+        <span class="brand-lockup__rule" aria-hidden="true"></span>
+        <span class="brand-lockup__monogram">B.E</span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
@@ -1481,7 +1580,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
 
   <main>
     <section class="hero" id="home">
-      <div class="hero__media" aria-label="The Bonheur Eternal collection of perfumes, arranged on a warm wood vanity">
+      <div class="hero__media" aria-label="The BONHEURETERNAL collection of perfumes, arranged on a warm wood vanity">
         <!-- Warm gradient sits behind the photo so the colour still feels on-brand
              if the image is slow or missing. -->
         <div class="hero__placeholder hero__placeholder--sand" aria-hidden="true"></div>
@@ -1497,7 +1596,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <img
             class="hero__bg"
             src="assets/background.jpg"
-            alt="The Bonheur Eternal collection — perfume bottles arranged on a warm wood vanity, lit in low golden light"
+            alt="The BONHEURETERNAL collection — perfume bottles arranged on a warm wood vanity, lit in low golden light"
             width="1536"
             height="1024"
             fetchpriority="high"
@@ -1511,7 +1610,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <h1 class="hero__title">
             <span class="hero__word" data-reveal="hero-title-1">Fragrance,</span>
             <br />
-            <span class="hero__word" data-reveal="hero-title-2">Eternalized.</span>
+            <span class="hero__word" data-reveal="hero-title-2">ETERNALIZED.</span>
           </h1>
           <p class="hero__subtitle" data-reveal="hero-subtitle">
             A curated collection of luxury perfumes, composed to elevate
@@ -1520,7 +1619,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <a
             class="btn btn--primary hero__cta"
             data-reveal="hero-cta"
-            href="https://wa.me/966598192526?text=Hi%20Bonheur%20Eternal%2C%20I%27d%20like%20to%20order%20a%20fragrance."
+            href="https://wa.me/966598192526?text=Hi%20BONHEURETERNAL%2C%20I%27d%20like%20to%20order%20a%20fragrance."
             target="_blank"
             rel="noopener"
           >
@@ -1535,7 +1634,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
 
     <section
       class="brand-banner"
-      aria-label="Bonheur Eternal B.E — premium quality and versatile fragrance"
+      aria-label="BONHEURETERNAL B.E — premium quality and versatile fragrance"
     >
       <figure class="brand-banner__figure reveal">
         <img
@@ -1544,7 +1643,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           tabindex="0"
           aria-haspopup="dialog"
           src="assets/BE_GENERAL.jpeg"
-          alt="Bonheur Eternal B.E Eau de Parfum bottle and presentation box on marble; highlights premium quality, long-lasting scent, and versatile wear from evening to everyday."
+          alt="BONHEURETERNAL B.E Eau de Parfum bottle and presentation box on marble; highlights premium quality, long-lasting scent, and versatile wear from evening to everyday."
           width="1280"
           height="543"
           loading="lazy"
@@ -1560,7 +1659,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <h2 class="section-title">Signature Fragrances</h2>
           <p class="section-lede">
             Five singular compositions — each an olfactive chapter in the
-            Bonheur Eternal story. Use the arrows or keyboard to browse the lineup.
+            BONHEURETERNAL story. Use the arrows or keyboard to browse the lineup.
           </p>
         </header>
 
@@ -1608,7 +1707,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       tabindex="0"
                       aria-haspopup="dialog"
                       src="assets/signature-fragrances/breeze.png"
-                      alt="Bonheur Eternal Breeze — luminous fresh floral eau de parfum"
+                      alt="BONHEURETERNAL Breeze — luminous fresh floral eau de parfum"
                       width="1026"
                       height="1532"
                       loading="lazy"
@@ -1645,7 +1744,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       tabindex="0"
                       aria-haspopup="dialog"
                       src="assets/signature-fragrances/elite.png"
-                      alt="Bonheur Eternal Elite — polished woody leather eau de parfum"
+                      alt="BONHEURETERNAL Elite — polished woody leather eau de parfum"
                       width="1281"
                       height="1227"
                       loading="lazy"
@@ -1682,7 +1781,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       tabindex="0"
                       aria-haspopup="dialog"
                       src="assets/signature-fragrances/legacy.png"
-                      alt="Bonheur Eternal Legacy — golden resin and amber eau de parfum"
+                      alt="BONHEURETERNAL Legacy — golden resin and amber eau de parfum"
                       width="1023"
                       height="1537"
                       loading="lazy"
@@ -1719,7 +1818,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       tabindex="0"
                       aria-haspopup="dialog"
                       src="assets/signature-fragrances/signature.png"
-                      alt="Bonheur Eternal Signature — house signature floral woody eau de parfum"
+                      alt="BONHEURETERNAL Signature — house signature floral woody eau de parfum"
                       width="1254"
                       height="1254"
                       loading="lazy"
@@ -1732,7 +1831,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       <span class="card__tag">EdP</span>
                     </div>
                     <p class="card__desc">
-                      The Bonheur Eternal centrepiece: jasmine sillage over warm
+                      The BONHEURETERNAL centrepiece: jasmine sillage over warm
                       sandalwood — balanced, commanding, unmistakably yours.
                     </p>
                     <a
@@ -1756,7 +1855,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                       tabindex="0"
                       aria-haspopup="dialog"
                       src="assets/signature-fragrances/smoked_timber.png"
-                      alt="Bonheur Eternal Smoked Timber — ember-soft cedar eau de parfum"
+                      alt="BONHEURETERNAL Smoked Timber — ember-soft cedar eau de parfum"
                       width="1023"
                       height="1537"
                       loading="lazy"
@@ -1807,8 +1906,8 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
         </div>
         <div class="decants reveal" id="decants" style="--reveal-delay: 80ms">
           <header class="decants__head">
-            <span class="eyebrow">Bonheur Eternal</span>
-            <h3 class="decants__title">Bonheur Eternal Luxury Decants</h3>
+            <span class="eyebrow">BONHEURETERNAL</span>
+            <h3 class="decants__title">BONHEURETERNAL LUXURY DECANTS</h3>
             <p class="decants__tagline">
               Crafted for those who believe elegance should never be left behind.
             </p>
@@ -1823,7 +1922,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                   tabindex="0"
                   aria-haspopup="dialog"
                   src="assets/signature-fragrances/luxury_decants_1.jpeg"
-                  alt="Bonheur Eternal luxury decants arranged as miniature vessels on an elegant surface"
+                  alt="BONHEURETERNAL luxury decants arranged as miniature vessels on an elegant surface"
                   width="1536"
                   height="1024"
                   loading="lazy"
@@ -1832,7 +1931,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
               </figure>
               <div class="decants__text">
                 <p>
-                  Bonheur Eternal Decants are refined miniature expressions of luxury —
+                  BONHEURETERNAL Decants are refined miniature expressions of luxury —
                   designed to slip effortlessly into your wallet, clutch, evening bag,
                   or travel case while preserving the sophistication of your signature
                   scent wherever life takes you.
@@ -1861,7 +1960,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                   tabindex="0"
                   aria-haspopup="dialog"
                   src="assets/signature-fragrances/luxury_decants_2.jpeg"
-                  alt="Bonheur Eternal pocket-sized decant held for an intimate on-the-go fragrance ritual"
+                  alt="BONHEURETERNAL pocket-sized decant held for an intimate on-the-go fragrance ritual"
                   width="1024"
                   height="1536"
                   loading="lazy"
@@ -1874,7 +1973,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <div class="decants__cta">
             <a
               class="btn btn--ghost"
-              href="https://wa.me/966598192526?text=Hi%20Bonheur%20Eternal%2C%20I%27d%20like%20to%20order%20luxury%20decants."
+              href="https://wa.me/966598192526?text=Hi%20BONHEURETERNAL%2C%20I%27d%20like%20to%20order%20luxury%20decants."
               target="_blank"
               rel="noopener"
             >
@@ -1894,7 +1993,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             tabindex="0"
             aria-haspopup="dialog"
             src="assets/about.jpeg"
-            alt="A gloved hand reaching for a Bonheur Eternal flacon amid apothecary bottles and fresh jasmine — the Bonheur Eternal atelier"
+            alt="A gloved hand reaching for a BONHEURETERNAL flacon amid apothecary bottles and fresh jasmine — the BONHEURETERNAL atelier"
             width="982"
             height="1059"
             loading="lazy"
@@ -1906,7 +2005,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <span class="eyebrow">Our Story</span>
           <h2 class="section-title">The Art of Lasting Impression</h2>
           <p class="about__lead">
-            Bonheur Eternal is a quiet rebellion against the disposable.
+            BONHEURETERNAL is a quiet rebellion against the disposable.
             We craft fragrances the old way — slowly, deliberately, from
             raw essences sourced at their origin — then translate them
             into modern compositions made for the lives we live now.
@@ -1915,7 +2014,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
             Every bottle is a small archive: of place, of feeling, of a
             moment worth returning to. Our vision is simple — that scent
             should not merely accompany you, but become a language of
-            who you are. Refined. Unhurried. Eternally yours.
+            who you are. Refined. Unhurried. ETERNALLY YOURS.
           </p>
 
           <ul class="about__pillars">
@@ -1928,7 +2027,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
               <span>Composed in small batches by master perfumers.</span>
             </li>
             <li>
-              <strong>Eternal</strong>
+              <strong>ETERNAL</strong>
               <span>Made to linger — on skin, and in memory.</span>
             </li>
           </ul>
@@ -1982,7 +2081,11 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <span class="footer__mark">Bonheur Eternal</span>
+        <a href="#home" class="brand-lockup footer__brand-link" aria-label="BONHEURETERNAL B.E — Home">
+          <span class="brand-lockup__name">BONHEURETERNAL</span>
+          <span class="brand-lockup__rule" aria-hidden="true"></span>
+          <span class="brand-lockup__monogram">B.E</span>
+        </a>
         <span class="footer__tag">Fragrance, eternalized.</span>
       </div>
 
@@ -2001,7 +2104,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
     </div>
 
     <div class="footer__meta container">
-      <span>© <span id="year"></span> Bonheur Eternal. All rights reserved.</span>
+      <span>© <span id="year"></span> BONHEURETERNAL. All rights reserved.</span>
       <span>Crafted with intention.</span>
     </div>
   </footer>
@@ -2040,7 +2143,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
     </defs>
   </svg>
 
-  <script type="module" src="scripts/main.js?v=8e02e63e"></script>
+  <script type="module" src="scripts/main.js?v=9f7da463"></script>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 /*
- * Bonheur Eternal — entry point.
+ * BONHEURETERNAL — entry point.
  * Loads each feature module, kicks them off, and marks body.is-loaded
  * so CSS entrance animations begin.
  */
