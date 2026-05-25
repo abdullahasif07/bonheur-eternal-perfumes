@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="BONHEURETERNAL — a luxury fragrance house crafting timeless scents. Explore our signature collection and order directly via WhatsApp." />
   <meta name="theme-color" content="#2b1e14" />
-  <title>BONHEURETERNAL B.E — Luxury Fragrance House</title>
+  <title>BONHEUR ETERNAL B.E — Luxury Fragrance House</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -255,7 +255,22 @@ ul { margin: 0; padding: 0; list-style: none; }
   text-align: center;
 }
 
-/* Nav: sits on translucent / hero — high-contrast lettering */
+/* Nav: left-docked lockup, larger for hero legibility */
+.nav__brand.brand-lockup .brand-lockup__name {
+  text-align: left;
+  font-size: clamp(0.8125rem, 0.62rem + 0.72vw, 1.0625rem);
+}
+
+.nav__brand.brand-lockup .brand-lockup__monogram {
+  /* Centred below the rule; wordmark stays left-aligned */
+  text-align: center;
+  font-size: clamp(1.38rem, 1.08rem + 1.1vw, 1.92rem);
+}
+
+.nav__brand.brand-lockup .brand-lockup__rule {
+  min-width: 5.75rem;
+}
+
 .nav__brand.brand-lockup {
   color: rgba(255, 255, 255, 0.98);
 }
@@ -331,15 +346,21 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-bottom: 1px solid var(--c-line-dark);
 }
 
+/* Brand left · links · mobile menu */
 .nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--s-6);
+  gap: clamp(var(--s-4), 3vw, var(--s-7));
 }
 
 .nav__brand {
   flex-shrink: 0;
+}
+
+.nav__brand.brand-lockup {
+  /* Stretch so the rule spans the wordmark and B.E can centre underneath */
+  align-items: stretch;
 }
 
 .nav__links {
@@ -371,6 +392,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .nav__toggle {
   display: none;
+  flex-shrink: 0;
   width: 40px;
   height: 40px;
   flex-direction: column;
@@ -409,6 +431,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 800px) {
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
+
   .nav__mobile[hidden] { display: none; }
   .nav__mobile:not([hidden]) { display: flex; }
 
@@ -1584,8 +1607,8 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
 <body>
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#home" class="brand-lockup nav__brand" aria-label="BONHEURETERNAL B.E — Home">
-        <span class="brand-lockup__name">BONHEURETERNAL</span>
+      <a href="#home" class="brand-lockup nav__brand" aria-label="BONHEUR ETERNAL B.E — Home">
+        <span class="brand-lockup__name">BONHEUR ETERNAL</span>
         <span class="brand-lockup__rule" aria-hidden="true"></span>
         <span class="brand-lockup__monogram">B.E</span>
       </a>
@@ -1598,6 +1621,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
       </nav>
 
       <button
+        type="button"
         class="nav__toggle"
         id="navToggle"
         aria-label="Toggle menu"
@@ -1696,7 +1720,7 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
           <span class="eyebrow">The Collection</span>
           <h2 class="section-title">Signature Fragrances</h2>
           <p class="section-lede">
-            Five singular compositions — each an olfactive chapter in the
+            Nine singular compositions — bottled releases and intimate studio portraits — each an olfactive chapter in the
             BONHEURETERNAL story. Use the arrows or keyboard to browse the lineup.
           </p>
         </header>
@@ -1917,6 +1941,154 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
                     >Order via WhatsApp</a>
                   </div>
                 </article>
+
+                <article
+                  class="card signature-carousel__slide reveal"
+                  role="listitem"
+                  style="--reveal-delay: 200ms"
+                >
+                  <div class="card__media">
+                    <img
+                      class="card__img card__img--tall"
+                      data-lightbox
+                      tabindex="0"
+                      aria-haspopup="dialog"
+                      src="assets/signature-fragrances/signature-1.jpeg"
+                      alt="BONHEURETERNAL Velvet Mist — warm amber-lit bottle on wooden surface"
+                      width="714"
+                      height="1280"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="card__body">
+                    <div class="card__head">
+                      <h3 class="card__name">Velvet Mist</h3>
+                      <span class="card__tag">50ml</span>
+                    </div>
+                    <p class="card__desc">
+                      A plush veil of rose absolute, vanilla orchid, and sueded
+                      musk — warm, enveloping, quietly opulent.
+                    </p>
+                    <a
+                      class="btn btn--ghost card__cta"
+                      href="https://wa.me/966598192526?text=Hi%2C%20I%27d%20like%20to%20order%20Velvet%20Mist."
+                      target="_blank"
+                      rel="noopener"
+                    >Order via WhatsApp</a>
+                  </div>
+                </article>
+
+                <article
+                  class="card signature-carousel__slide reveal"
+                  role="listitem"
+                  style="--reveal-delay: 240ms"
+                >
+                  <div class="card__media">
+                    <img
+                      class="card__img card__img--carousel-fill"
+                      data-lightbox
+                      tabindex="0"
+                      aria-haspopup="dialog"
+                      src="assets/signature-fragrances/signature-2.jpeg"
+                      alt="BONHEURETERNAL Scent Luxe — flacon beside matching presentation box"
+                      width="1125"
+                      height="1138"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="card__body">
+                    <div class="card__head">
+                      <h3 class="card__name">Scent Luxe</h3>
+                      <span class="card__tag">50ml</span>
+                    </div>
+                    <p class="card__desc">
+                      Crisp bergamot meets white iris and cedarwood — a clean,
+                      architectural fragrance with an understated confidence.
+                    </p>
+                    <a
+                      class="btn btn--ghost card__cta"
+                      href="https://wa.me/966598192526?text=Hi%2C%20I%27d%20like%20to%20order%20Scent%20Luxe."
+                      target="_blank"
+                      rel="noopener"
+                    >Order via WhatsApp</a>
+                  </div>
+                </article>
+
+                <article
+                  class="card signature-carousel__slide reveal"
+                  role="listitem"
+                  style="--reveal-delay: 280ms"
+                >
+                  <div class="card__media">
+                    <img
+                      class="card__img"
+                      data-lightbox
+                      tabindex="0"
+                      aria-haspopup="dialog"
+                      src="assets/signature-fragrances/signature-5.jpeg"
+                      alt="BONHEURETERNAL Essence Box — bottle beside gold-bordered presentation box"
+                      width="864"
+                      height="1184"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="card__body">
+                    <div class="card__head">
+                      <h3 class="card__name">Essence Box</h3>
+                      <span class="card__tag">50ml</span>
+                    </div>
+                    <p class="card__desc">
+                      Smoked oud, saffron, and amber resin layered over leather —
+                      a dusk-lit signature for the quietly magnetic.
+                    </p>
+                    <a
+                      class="btn btn--ghost card__cta"
+                      href="https://wa.me/966598192526?text=Hi%2C%20I%27d%20like%20to%20order%20Essence%20Box."
+                      target="_blank"
+                      rel="noopener"
+                    >Order via WhatsApp</a>
+                  </div>
+                </article>
+
+                <article
+                  class="card signature-carousel__slide reveal"
+                  role="listitem"
+                  style="--reveal-delay: 320ms"
+                >
+                  <div class="card__media">
+                    <img
+                      class="card__img"
+                      data-lightbox
+                      tabindex="0"
+                      aria-haspopup="dialog"
+                      src="assets/signature-fragrances/signature-4.jpeg"
+                      alt="BONHEURETERNAL Nuit Dorée — bottle and box in twilight light"
+                      width="864"
+                      height="1184"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="card__body">
+                    <div class="card__head">
+                      <h3 class="card__name">Nuit Dorée</h3>
+                      <span class="card__tag">50ml</span>
+                    </div>
+                    <p class="card__desc">
+                      Jasmine sambac, candied plum, and golden tobacco — a rich,
+                      after-hours accord wrapped in warm sensuality.
+                    </p>
+                    <a
+                      class="btn btn--ghost card__cta"
+                      href="https://wa.me/966598192526?text=Hi%2C%20I%27d%20like%20to%20order%20Nuit%20Dor%C3%A9e."
+                      target="_blank"
+                      rel="noopener"
+                    >Order via WhatsApp</a>
+                  </div>
+                </article>
               </div>
             </div>
 
@@ -2119,8 +2291,8 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <a href="#home" class="brand-lockup footer__brand-link" aria-label="BONHEURETERNAL B.E — Home">
-          <span class="brand-lockup__name">BONHEURETERNAL</span>
+        <a href="#home" class="brand-lockup footer__brand-link" aria-label="BONHEUR ETERNAL B.E — Home">
+          <span class="brand-lockup__name">BONHEUR ETERNAL</span>
           <span class="brand-lockup__rule" aria-hidden="true"></span>
           <span class="brand-lockup__monogram">B.E</span>
         </a>

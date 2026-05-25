@@ -21,15 +21,21 @@
   border-bottom: 1px solid var(--c-line-dark);
 }
 
+/* Brand left · links · mobile menu */
 .nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--s-6);
+  gap: clamp(var(--s-4), 3vw, var(--s-7));
 }
 
 .nav__brand {
   flex-shrink: 0;
+}
+
+.nav__brand.brand-lockup {
+  /* Stretch so the rule spans the wordmark and B.E can centre underneath */
+  align-items: stretch;
 }
 
 .nav__links {
@@ -61,6 +67,7 @@
 
 .nav__toggle {
   display: none;
+  flex-shrink: 0;
   width: 40px;
   height: 40px;
   flex-direction: column;
@@ -99,6 +106,7 @@
 @media (max-width: 800px) {
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
+
   .nav__mobile[hidden] { display: none; }
   .nav__mobile:not([hidden]) { display: flex; }
 
