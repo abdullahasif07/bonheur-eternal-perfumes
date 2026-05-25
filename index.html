@@ -1369,13 +1369,51 @@ body.is-loaded .hero__bg {
 
 .footer__meta {
   display: flex;
-  justify-content: space-between;
-  gap: var(--s-4);
+  flex-direction: column;
+  gap: var(--s-3);
   padding-top: var(--s-5);
   font-size: var(--fs-xs);
   letter-spacing: 0.06em;
   color: rgba(245, 235, 220, 0.5);
+}
+
+.footer__meta-row {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-4);
+}
+
+.footer__credit {
+  margin: 0;
+  max-width: 28rem;
+  letter-spacing: 0.035em;
+  line-height: 1.55;
+  color: rgba(245, 235, 220, 0.45);
+}
+
+@media (max-width: 760px) {
+  .footer__credit {
+    text-align: center;
+    margin-inline: auto;
+    max-width: none;
+  }
+}
+
+.footer__credit a {
+  color: rgba(251, 191, 36, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer__credit a:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.footer__credit a:hover {
+  color: var(--c-amber-400);
 }
 
 /* ↪ inlined styles/components/lightbox.css */
@@ -2104,8 +2142,19 @@ body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
     </div>
 
     <div class="footer__meta container">
-      <span>© <span id="year"></span> BONHEURETERNAL. All rights reserved.</span>
-      <span>Crafted with intention.</span>
+      <div class="footer__meta-row">
+        <span>© <span id="year"></span> BONHEURETERNAL. All rights reserved.</span>
+        <span>Crafted with intention.</span>
+      </div>
+      <!-- Mailto targets your personal inbox for questions about this site -->
+      <p class="footer__credit">
+        Website by
+        <a
+          href="mailto:abdullahastro07@gmail.com?subject=Regarding%20the%20BONHEURETERNAL%20website"
+        >
+          Muhammad Abdullah</a>
+        — say hello if you have questions about this site.
+      </p>
     </div>
   </footer>
 
