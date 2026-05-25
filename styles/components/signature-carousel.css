@@ -1,0 +1,121 @@
+/* =========================================================
+   Signature fragrances carousel (3 / 2 / 1 visible by breakpoint)
+   ========================================================= */
+
+.signature-carousel {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.signature-carousel__chrome {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(var(--s-4), 2.5vw, var(--s-6));
+  align-items: center;
+}
+
+@media (max-width: 520px) {
+  .signature-carousel__chrome {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: stretch;
+  }
+
+  .signature-carousel__arrow--prev { order: 2; }
+  .signature-carousel__viewport { order: 1; }
+  .signature-carousel__arrow--next { order: 3; }
+
+  .signature-carousel__chrome .signature-carousel__arrow {
+    justify-self: center;
+    width: min(100%, 200px);
+  }
+}
+
+.signature-carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+}
+
+.signature-carousel__track {
+  display: flex;
+  gap: clamp(var(--s-4), 2.5vw, var(--s-6));
+  will-change: transform;
+}
+
+.signature-carousel__slide.card {
+  min-width: 0;
+}
+
+/* Product PNGs — show full bottle without hard crop */
+.signature-carousel .card__media {
+  aspect-ratio: 3 / 4;
+}
+
+.signature-carousel .card__img {
+  object-fit: contain;
+  object-position: center;
+  padding: var(--s-3);
+}
+
+.signature-carousel .card__img--tall {
+  object-position: center;
+}
+
+/* Elite + Signature source art is nearly square — `contain` letterboxes.
+   Fill the 3:4 frame like the taller bottles; nudge focal point to the flacon. */
+.signature-carousel .card__img.card__img--carousel-fill {
+  padding: var(--s-2);
+  object-fit: cover;
+  object-position: center 44%;
+}
+
+.signature-carousel__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  padding: 0;
+  color: var(--c-sand-50);
+  background: rgba(245, 235, 220, 0.06);
+  border: 1px solid var(--c-line-dark);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--t-med) var(--ease),
+    border-color var(--t-med) var(--ease),
+    color var(--t-med) var(--ease),
+    opacity var(--t-fast) var(--ease);
+}
+
+.signature-carousel__arrow:hover:not(:disabled) {
+  background: rgba(196, 134, 75, 0.25);
+  border-color: rgba(196, 134, 75, 0.55);
+  color: #fff;
+}
+
+.signature-carousel__arrow:focus-visible {
+  outline: 2px solid var(--c-amber-500);
+  outline-offset: 3px;
+}
+
+.signature-carousel__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.signature-carousel__arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.signature-carousel__hint {
+  margin-top: var(--s-4);
+  text-align: center;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 235, 220, 0.45);
+}

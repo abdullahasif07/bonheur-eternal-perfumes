@@ -9,6 +9,7 @@ import { initSmoothScroll } from "./scroll.js";
 import { initContactForm } from "./form.js";
 import { initAnimations }  from "./animations.js";
 import { initLightbox }    from "./lightbox.js";
+import { initSignatureCarousels } from "./signature-carousel.js";
 
 const boot = () => {
   initNav();
@@ -16,6 +17,7 @@ const boot = () => {
   initContactForm();
   initAnimations();
   initLightbox();
+  initSignatureCarousels();
 
   // Trigger hero entrance sequence on next frame, so the initial
   // state has rendered and the transition is actually visible.

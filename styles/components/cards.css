@@ -11,20 +11,7 @@
 .collection .section-title { color: var(--c-sand-50); }
 .collection .section-lede  { color: rgba(245, 235, 220, 0.72); }
 
-/* 2 × 2 editorial grid — gives each fragrance generous real estate.
-   Max-width keeps cards tasteful on ultrawide screens; the grid is
-   centered within the section container. */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(var(--s-5), 3vw, var(--s-7));
-  max-width: 1080px;
-  margin-inline: auto;
-}
-
-@media (max-width: 520px) {
-  .cards { grid-template-columns: 1fr; gap: var(--s-5); }
-}
+/* Lineup lives in `.signature-carousel` — see signature-carousel.css */
 
 .card {
   background: rgba(245, 235, 220, 0.04);
