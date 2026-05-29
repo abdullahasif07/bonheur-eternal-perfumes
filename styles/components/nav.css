@@ -6,11 +6,33 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 50;
-  padding: var(--s-4) 0;
+  padding: clamp(var(--s-4), 2vh, var(--s-5)) 0;
   background: rgba(36, 24, 18, 0);
   transition: background var(--t-med) var(--ease),
               backdrop-filter var(--t-med) var(--ease),
               padding var(--t-med) var(--ease);
+}
+
+/* Soft top scrim so the lockup reads first over the hero photo */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 8, 5, 0.72) 0%,
+    rgba(12, 8, 5, 0.38) 55%,
+    rgba(12, 8, 5, 0) 100%
+  );
+  opacity: 1;
+  transition: opacity var(--t-med) var(--ease);
+}
+
+.nav.is-scrolled::before,
+.nav.is-open::before {
+  opacity: 0;
 }
 
 .nav.is-scrolled {
@@ -21,21 +43,19 @@
   border-bottom: 1px solid var(--c-line-dark);
 }
 
-/* Brand left · links · mobile menu */
+/* Links flush left; minimal inset from screen edge */
+.nav .container {
+  max-width: none;
+  margin: 0;
+  padding-left: var(--s-5);
+  padding-right: var(--s-6);
+}
+
 .nav__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(var(--s-4), 3vw, var(--s-7));
-}
-
-.nav__brand {
-  flex-shrink: 0;
-}
-
-.nav__brand.brand-lockup {
-  /* Stretch so the rule spans the wordmark and B.E can centre underneath */
-  align-items: stretch;
+  justify-content: flex-start;
+  gap: clamp(var(--s-5), 4vw, var(--s-8));
 }
 
 .nav__links {
@@ -44,9 +64,10 @@
 }
 
 .nav__links a {
-  font-size: var(--fs-sm);
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
   padding: var(--s-2) 0;
   position: relative;
 }
@@ -104,6 +125,10 @@
 .nav__mobile a:last-child { border-bottom: none; }
 
 @media (max-width: 800px) {
+  .nav .container {
+    padding-left: var(--s-4);
+  }
+
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
 
