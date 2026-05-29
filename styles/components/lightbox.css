@@ -27,12 +27,21 @@ img[data-lightbox]:focus-visible {
   box-sizing: border-box;
 }
 
+/* Closed dialog must not show fixed UI (× was leaking top-right) */
+.lightbox:not([open]) {
+  display: none;
+}
+
 .lightbox::backdrop {
   background: rgba(20, 12, 6, 0.9);
   backdrop-filter: blur(8px);
 }
 
 .lightbox__close {
+  display: none;
+}
+
+.lightbox[open] .lightbox__close {
   position: fixed;
   top: clamp(var(--s-4), 3vw, var(--s-6));
   right: clamp(var(--s-4), 3vw, var(--s-6));

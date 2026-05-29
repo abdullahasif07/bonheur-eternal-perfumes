@@ -109,6 +109,29 @@ body.is-loaded .hero__bg {
     );
 }
 
+/* Centred below fixed nav */
+.hero__brand-panel {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: clamp(5.25rem, 13vh, 7.75rem);
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--s-5);
+  pointer-events: none;
+}
+
+.hero__brand-panel.container {
+  max-width: none;
+  margin: 0;
+  padding-inline: var(--s-5);
+}
+
+.hero__brand-panel .hero__brand {
+  pointer-events: auto;
+}
+
 .hero__content {
   position: relative;
   z-index: 1;
@@ -118,14 +141,61 @@ body.is-loaded .hero__bg {
   color: #fff;
 }
 
-.hero__title {
-  font-size: var(--fs-h1);
+/* Primary hero identity — BONHEUR ETERNAL / rule / B.E */
+.hero__brand.brand-lockup {
+  align-items: stretch;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.hero__brand.brand-lockup .brand-lockup__name {
+  text-align: center;
+  font-size: clamp(1.125rem, 0.9rem + 1.25vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-shadow:
+    0 0 18px rgba(0, 0, 0, 0.75),
+    0 0 42px rgba(0, 0, 0, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.hero__brand.brand-lockup .brand-lockup__rule {
+  min-width: clamp(9rem, 32vw, 16rem);
+  height: 1.5px;
+  margin-top: clamp(0.55rem, 1.2vw, 0.8rem);
+  margin-bottom: clamp(0.45rem, 1vw, 0.65rem);
+  opacity: 0.92;
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero__brand.brand-lockup .brand-lockup__monogram {
+  text-align: center;
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 1.85rem + 4vw, 4.75rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  text-shadow:
+    0 0 22px rgba(0, 0, 0, 0.8),
+    0 0 48px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Supporting tagline — deliberately secondary to the house name */
+.hero__tagline {
+  margin-top: 0;
+  font-family: var(--ff-display);
+  font-size: clamp(1.625rem, 1.25rem + 2.2vw, 3rem);
   font-weight: 300;
   letter-spacing: -0.02em;
-  line-height: 0.96;
+  line-height: 0.98;
   max-width: 14ch;
-  color: #fff;
-  text-shadow: 0 2px 20px rgba(20, 10, 4, 0.25);
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 2px 16px rgba(20, 10, 4, 0.22);
 }
 
 .hero__word {
@@ -155,6 +225,18 @@ body.is-loaded .hero__bg {
    the warm midtones. */
 @media (max-width: 640px) {
   .hero__media { min-height: 88vh; }
+
+  .hero__brand-panel {
+    top: clamp(4.75rem, 12vh, 6.25rem);
+  }
+
+  .hero__brand.brand-lockup .brand-lockup__monogram {
+    font-size: clamp(2.125rem, 10vw, 3.25rem);
+  }
+
+  .hero__tagline {
+    font-size: clamp(1.375rem, 5.5vw, 2rem);
+  }
 
   .hero__bg {
     object-position: 70% center;

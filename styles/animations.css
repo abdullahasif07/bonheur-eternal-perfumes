@@ -26,10 +26,11 @@ body.is-loaded [data-reveal] {
 }
 
 /* Stagger each element in the hero content block */
-body.is-loaded [data-reveal="hero-title-1"] { transition-delay: 0.45s; }
-body.is-loaded [data-reveal="hero-title-2"] { transition-delay: 0.60s; }
-body.is-loaded [data-reveal="hero-subtitle"] { transition-delay: 0.85s; }
-body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.05s; }
+body.is-loaded [data-reveal="hero-brand"]    { transition-delay: 0.35s; }
+body.is-loaded [data-reveal="hero-title-1"] { transition-delay: 0.55s; }
+body.is-loaded [data-reveal="hero-title-2"] { transition-delay: 0.70s; }
+body.is-loaded [data-reveal="hero-subtitle"] { transition-delay: 0.90s; }
+body.is-loaded [data-reveal="hero-cta"]      { transition-delay: 1.10s; }
 
 /* ---- 2. Scroll reveal utility ---- */
 
